@@ -1,3 +1,4 @@
+import { Button } from '../Components/Button';
 import { router } from '@inertiajs/react'
 import React, { useState } from "react";
 
@@ -23,7 +24,7 @@ const Create = ({success, error}) => {
         <label>
             amount<input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
         </label>
-        <button>Save</button>
+        <Button size="sm">Save</Button>
         </form>
         </>
     )

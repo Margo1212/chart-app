@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from '@inertiajs/react';
 import Chart from "../Components/Chart";
+import { Channel } from "../models/channel";
 
-const MainPage = ({channels}) => {
+type ChannelsProps =  {
+    channels: Channel[];
+  }
+
+
+const MainPage = ({channels}: ChannelsProps) => {
+    
+    console.log(channels)
     return (
         <>
         <div className="p-3 border-2"><Link href="/create">Create user</Link></div>
@@ -31,4 +39,3 @@ const MainPage = ({channels}) => {
 }
 
 export default MainPage;
-    ;

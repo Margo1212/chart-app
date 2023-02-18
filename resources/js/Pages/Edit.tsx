@@ -1,10 +1,12 @@
+import { Button } from '../Components/Button';
 import { router } from '@inertiajs/react'
 import React, { useEffect, useState } from "react";
+import {Channel} from '../models/channel'
 
 
-const Edit = ({success, channel}) => {
-    const [name, setName] = useState("");
-    const [amount, setAmount] = useState("");
+const Edit = (channel: Channel) => {
+    const [name, setName] = useState<string>("");
+    const [amount, setAmount] = useState<number>(0);
 
     useEffect(() => {
         setName(channel.name);
@@ -25,7 +27,7 @@ const Edit = ({success, channel}) => {
         <label>
             amount<input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
         </label>
-        <button>Save</button>
+        <Button size="sm">Save</Button>
         </form>
         </>
     )
