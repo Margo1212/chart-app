@@ -1,21 +1,19 @@
 import { PieChart } from 'react-minimal-pie-chart';
 import React from "react";
+import { Channel } from '../models/channel';
 
+type ChannelsProps =  {
+  channels: Channel[];
+}
 
-const Chart = () => {
-
-
-    return (
-        <>
-        <PieChart
-  data={[
-    { title: 'One', value: 10, color: '#E38627' },
-    { title: 'Two', value: 15, color: '#C13C37' },
-    { title: 'Three', value: 20, color: '#6A2135' },
-  ]}
-/>;
-        </>
-    )
+const Chart = ({channels} : ChannelsProps) => {
+  return (
+    <PieChart
+      data={channels.map(channel => {
+        return { title: channel.name, value: channel.amount, color: channel.color }
+      })}
+    />
+  )
 }
 
 export default Chart;
