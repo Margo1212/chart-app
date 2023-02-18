@@ -17,7 +17,7 @@ class ChannelController extends Controller
     public function index(): Response
     {
         $channels = Channel::all();
-        return Inertia::render('Channels/Channel', [
+        return Inertia::render('MainPage', [
             'channels' => $channels
         ]);
     }

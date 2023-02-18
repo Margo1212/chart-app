@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from '@inertiajs/react'
-import Chart from "@/Components/Chart";
+import { Link } from '@inertiajs/react';
+import Chart from "../Components/Chart";
 
-const Channels = ({channels}) => {
+const MainPage = ({channels}) => {
     return (
-        <><Link href="/create">Create user</Link>
+        <>
+        <div className="p-3 border-2"><Link href="/create">Create user</Link></div>
+        
         <table>
             <thead>
                 <tr>
@@ -28,4 +30,5 @@ const Channels = ({channels}) => {
     )
 }
 
-export default Channels;
+export default MainPage;
+    ;

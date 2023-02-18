@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "jsx": "react",
+      "types": ["vite/client"],
+      "module": "es2020",
+      "moduleResolution":"node",
+      "allowSyntheticDefaultImports": true,
+      "paths": {
+        "@pages/*": ["./resources/js/Pages/*"],
+        "@components/*": ["./resources/js/Components/*"],
+      }
+    }
+  }
