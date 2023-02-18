@@ -5,12 +5,10 @@ import { Channel } from "../models/channel";
 
 type ChannelsProps =  {
     channels: Channel[];
-  }
+}
 
 
 const MainPage = ({channels}: ChannelsProps) => {
-    
-    console.log(channels)
     return (
         <>
         <div className="p-3 border-2"><Link href="/create">Create user</Link></div>
@@ -27,6 +25,7 @@ const MainPage = ({channels}: ChannelsProps) => {
                     <tr key={index}>
                         <td>{channel.name}</td>
                         <td>{channel.amount}</td>
+                        <td>{channel.color}</td>
                         <td><Link href={`/edit/${channel.id}`}>Edit</Link></td>
                         <td><Link href={`/delete/${channel.id}`}>Delete</Link></td>
                     </tr>
@@ -34,7 +33,7 @@ const MainPage = ({channels}: ChannelsProps) => {
 
             </tbody>
         </table>
-        <Chart /></>
+        <Chart channels={channels} /></>
     )
 }
 
