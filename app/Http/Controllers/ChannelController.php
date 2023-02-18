@@ -25,9 +25,9 @@ class ChannelController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
-        return Inertia::render('Channels/Create');
+      return Inertia::render("Create");
     }
 
     /**
@@ -35,7 +35,15 @@ class ChannelController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+        $channel = new channel();
+        $data = array(
+            'name' => $request->input('name'),
+            'amount' => $request->input('amount'),
+        );
+        $channel->create($data);
+        session()->flash('success');
+
+        return redirect('/');
     }
 
     /**
@@ -49,24 +57,35 @@ class ChannelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Channel $channel): Response
+    public function edit($id): Response
     {
-        //
+        $channel = Channel::find($id);
+        return Inertia::render('Edit', ['channel'=>$channel]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Channel $channel): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
-        //
+        $channel = Channel::findOrFail($id);
+        $channel->name = $request->input('name');
+        $channel->amount = $request->input('amount');
+
+        $channel->save();
+        session()->flash('success', 'Channel updated');
+        return redirect('/');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Channel $channel): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
-        //
+        $channel = Channel::findOrFail($id);
+        $channel->delete();
+        session()->flash('success', 'Channel deleted');
+        return redirect('/');
     }
 }
