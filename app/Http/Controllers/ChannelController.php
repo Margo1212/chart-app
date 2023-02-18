@@ -27,7 +27,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-      return Inertia::render("Create");
+      return Inertia::render("CreatePage");
     }
 
     /**
@@ -39,6 +39,7 @@ class ChannelController extends Controller
         $data = array(
             'name' => $request->input('name'),
             'amount' => $request->input('amount'),
+            'color' => $request->input('color'),
         );
         $channel->create($data);
         session()->flash('success');
@@ -60,7 +61,7 @@ class ChannelController extends Controller
     public function edit($id): Response
     {
         $channel = Channel::find($id);
-        return Inertia::render('Edit', ['channel'=>$channel]);
+        return Inertia::render('EditPage', ['channel'=>$channel]);
     }
 
     /**
@@ -71,6 +72,7 @@ class ChannelController extends Controller
         $channel = Channel::findOrFail($id);
         $channel->name = $request->input('name');
         $channel->amount = $request->input('amount');
+        $channel->color = $request->input('color');
 
         $channel->save();
         session()->flash('success', 'Channel updated');
