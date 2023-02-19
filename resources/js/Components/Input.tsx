@@ -21,7 +21,7 @@ export const Input = ({ placeholder, type, label, onChange, ...props }: InputPro
         {label}
       <input
         type={type}
-        className="bg-background placeholder-border text-black focus:ring-indigo-500 focus:border-indigo-500 block w-full px-12 sm:text-sm border-2 border-border rounded-xl"
+        className="bg-background mb-8 text-gray-500 focus:ring-indigo-500 focus:border-indigo-500 block w-full px-12 sm:text-sm border-2 border-gray-200 rounded-lg"
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
