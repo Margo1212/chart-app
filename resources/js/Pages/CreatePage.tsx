@@ -1,10 +1,10 @@
 import { Button } from '../Components/Button';
-import { router } from '@inertiajs/react'
+import { router} from '@inertiajs/react'
 import React, { FormEventHandler, useState } from "react";
 import { Input } from '../Components/Input';
 
 
-const CreatePage = () => {
+const CreatePage = ({errors}) => {
     const [name, setName] = useState<string | undefined>("");
     const [amount, setAmount] = useState<number | undefined>(0);
     const [color, setColor] = useState<string | undefined>("#000");
@@ -33,8 +33,11 @@ const CreatePage = () => {
         <h2 className="mb-8 self-center font-medium leading-tight text-4xl mt-0 ">Create channel</h2>
         <form className="flex flex-col justify-around" onSubmit={saveData}>
             <Input label="Name" value={name} type="text" onChange={handleNameChange} />
+            {errors.name && <div className="text-red-500 text-xs">{errors.name}</div>}
             <Input label="Amount" value={amount} type="number" onChange={handleAmountChange} />
+            {errors.amount && <div className="text-red-500 text-xs">{errors.amount}</div>}
             <Input label="Color" value={color} type="color" onChange={handleColorChange} />
+            {errors.color && <div className="text-red-500 text-xs">{errors.color}</div>}
             <Button size="sm">Save</Button>
         </form>
         </div>
