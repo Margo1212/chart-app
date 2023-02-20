@@ -25,7 +25,7 @@ const EditPage = ({channel} : ChannelProps ) => {
 
     const updateChannel : FormEventHandler<HTMLFormElement> = (event ) => {
         event.preventDefault();
-        router.post(`/update/${channel.id}`, {name, amount, color})
+        router.put(`/update/${channel.id}`, {name, amount, color})
     }
 
     const handleNameChange = (value: string) => {

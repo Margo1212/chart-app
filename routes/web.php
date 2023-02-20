@@ -22,7 +22,7 @@ Route::get('/create', [ChannelController::class, 'create']);
 Route::post('/save', [ChannelController::class, 'store']);
 
 Route::get('/edit/{id}', [ChannelController::class, 'edit']);
-Route::post('/update/{id}', [ChannelController::class, 'update']);
+Route::put('/update/{id}', [ChannelController::class, 'update']);
 
 Route::get('/delete/{id}', [ChannelController::class, 'destroy']);
 

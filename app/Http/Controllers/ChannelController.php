@@ -72,7 +72,7 @@ class ChannelController extends Controller
      */
     public function update(ChannelUpdateRequest $request, $id): RedirectResponse
     {
-        $channel = Channel::findOrFail($id);
+        $channel = Channel::find($id);
         $channel->name = $request ->input('name');
         $channel->amount = $request->input('amount');
         $channel->color = $request->input('color');
@@ -88,9 +88,13 @@ class ChannelController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        $channel = Channel::findOrFail($id);
-        $channel->delete();
+        $channel = Channel::find($id);
+        if ($channel != null) {
+            $channel->delete();
         session()->flash('success', 'Channel deleted');
         return redirect('/');
+        }
+        return redirect('/');
+        
     }
 }
