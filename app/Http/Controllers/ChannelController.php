@@ -73,7 +73,7 @@ class ChannelController extends Controller
     public function update(ChannelUpdateRequest $request, $id): RedirectResponse
     {
         $channel = Channel::findOrFail($id);
-        $channel->name = $request->input('name');
+        $channel->name = $request ->input('name');
         $channel->amount = $request->input('amount');
         $channel->color = $request->input('color');
 
