@@ -4,11 +4,9 @@ import Chart from "../Components/Chart";
 import { Channel } from "../models/channel";
 import { FaStar, FaPen, FaTrashAlt } from "react-icons/fa";
 
-
 type ChannelsProps =  {
     channels: Channel[];
 }
-
 
 const MainPage = ({channels}: ChannelsProps) => {
     return (

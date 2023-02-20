@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Channel;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChannelUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -35,14 +37,15 @@ class ChannelController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $channel = new channel();
-        $data = array(
-            'name' => $request->input('name'),
-            'amount' => $request->input('amount'),
-            'color' => $request->input('color'),
-        );
-        $channel->create($data);
-        session()->flash('success');
+
+        Channel::create($request->validate([
+            'name' => ['required', 'unique:channels', 'max:20'],
+            'amount' => ['required', 'numeric','min:1','max:1000'],
+            'color' => ['required', 'unique:channels', 'max:10'],
+          ]));
+
+          session()->flash('success', 'Channel created');
+
 
         return redirect('/');
     }
@@ -67,7 +70,7 @@ class ChannelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(ChannelUpdateRequest $request, $id): RedirectResponse
     {
         $channel = Channel::findOrFail($id);
         $channel->name = $request->input('name');
