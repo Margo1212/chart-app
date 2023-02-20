@@ -65,3 +65,13 @@ git clone https://github.com/Margo1212/chart-app.git
 ```bash
  php artisan migrate
 ```
+
+8. Start the application
+
+```bash
+ php artisan serve
+```
+
+```bash
+ npm run dev
+```
